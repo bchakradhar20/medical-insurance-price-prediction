@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Insurance Premium Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            background-color: #4caf50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medical Insurance Premium Predictor</h1>
+    <form action="/predict" method="POST">
+        <label for="age">Enter Age:</label>
+        <input type="number" id="age" name="age" min="5" max="90" required>
+
+        <label for="height_cm">Enter Height (in cm):</label>
+        <input type="number" id="height_cm" name="height_cm" min="100.0" max="250.0" step="0.1" required>
+
+        <label for="weight">Enter Weight (in kg):</label>
+        <input type="number" id="weight" name="weight" min="20.0" max="200.0" step="0.1" required>
+
+        <label for="known_allergies">Any known allergies ?</label>
+        <select id="known_allergies" name="known_allergies" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="any_chronic_diseases">Any Chronic Diseases ?</label>
+        <select id="any_chronic_diseases" name="any_chronic_diseases" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="diabetes">Diabetes ?</label>
+        <select id="diabetes" name="diabetes" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="history_of_cancer_in_family">History Of Cancer In Family ?</label>
+        <select id="history_of_cancer_in_family" name="history_of_cancer_in_family" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="any_transplants">Any Transplants ?</label>
+        <select id="any_transplants" name="any_transplants" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="blood_pressure_problems">Blood Pressure Problems ?</label>
+        <select id="blood_pressure_problems" name="blood_pressure_problems" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <label for="no_of_major_surgeries">No of major surgeries</label>
+        <input type="number" id="no_of_major_surgeries" name="no_of_major_surgeries" min="0" max="5" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if premium %}
+        <h2>Insurance Premium will be {{ premium }} USD Dollars</h2>
+    {% endif %}
+</body>
+</html>
